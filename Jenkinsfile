@@ -32,7 +32,7 @@ pipeline {
             steps {
                 script {
                     // Instala las dependencias del proyecto Angular
-                    sh "cd ${PROJECT_ROOT}; npm install"
+                    sh "cd ${PROJECT_ROOT}; npm install --force"
                 }
             }
         }
