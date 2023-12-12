@@ -11,7 +11,7 @@ pipeline {
                 script {
                     // Clona el repositorio de GitHub
                     checkout([$class: 'GitSCM', 
-                        branches: [[name: '*/main']], 
+                        branches: [[name: '*/master']], 
                         doGenerateSubmoduleConfigurations: false, 
                         extensions: [
                             [$class: 'CleanBeforeCheckout'],
