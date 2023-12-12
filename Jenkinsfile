@@ -1,11 +1,6 @@
 pipeline {
     agent any
     
-    environment {
-        // Define las variables de entorno necesarias
-        NODE_HOME = tool 'NodeJS'
-        PATH = "$NODE_HOME/bin:$PATH"
-    }
     tools {
     nodejs "NodeJs"
     }
