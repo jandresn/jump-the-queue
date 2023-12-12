@@ -6,6 +6,9 @@ pipeline {
         NODE_HOME = tool 'NodeJS'
         PATH = "$NODE_HOME/bin:$PATH"
     }
+    tools {
+    nodejs "NodeJs"
+    }
 
     stages {
         stage('Checkout') {
