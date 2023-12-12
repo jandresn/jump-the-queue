@@ -1,6 +1,8 @@
 pipeline {
     agent any
-    
+    environment {
+        PROJECT_ROOT = 'angular'
+    }
     tools {
     nodejs "NodeJs"
     }
@@ -30,7 +32,7 @@ pipeline {
             steps {
                 script {
                     // Instala las dependencias del proyecto Angular
-                    sh 'npm install'
+                    sh "cd ${PROJECT_ROOT}; npm install"
                 }
             }
         }
@@ -39,7 +41,7 @@ pipeline {
             steps {
                 script {
                     // Realiza la construcción del proyecto Angular
-                    sh 'npm run build'
+                    sh "cd ${PROJECT_ROOT};npm run build"
                 }
             }
         }
@@ -48,7 +50,7 @@ pipeline {
             steps {
                 script {
                     // Ejecuta las pruebas del proyecto Angular
-                    sh 'npm run test'
+                    sh " cd ${PROJECT_ROOT};npm run test"
                 }
             }
         }
@@ -57,7 +59,7 @@ pipeline {
             steps {
                 script {
                     // Ejecuta el linting para el proyecto Angular
-                    sh 'npm run lint'
+                    sh "cd ${PROJECT_ROOT};npm run lint"
                 }
             }
         }
