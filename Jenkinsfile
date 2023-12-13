@@ -70,20 +70,20 @@ pipeline {
         //     }
         // }
 
-        stage('SonarQube Analysis') {
-            steps {
-                script {
-                   // Configura la herramienta de SonarQube Scanner
-                    def scannerHome = tool name: 'sonarqube', type: 'hudson.plugins.sonar.SonarRunnerInstallation'
-                     withCredentials([string(credentialsId: 'sonartoken', variable: 'SONAR_TOKEN')]) {
-                        withSonarQubeEnv('sonarqube') {
-                            // Utiliza el escáner de SonarQube con el token de acceso
-                            sh "cd ${PROJECT_ROOT};${scannerHome}/bin/sonar-scanner -Dsonar.login=${SONAR_TOKEN}"
-                        }
-                    }
-                }
-            }
-        }
+        // stage('SonarQube Analysis') {
+        //     steps {
+        //         script {
+        //            // Configura la herramienta de SonarQube Scanner
+        //             def scannerHome = tool name: 'sonarqube', type: 'hudson.plugins.sonar.SonarRunnerInstallation'
+        //              withCredentials([string(credentialsId: 'sonartoken', variable: 'SONAR_TOKEN')]) {
+        //                 withSonarQubeEnv('sonarqube') {
+        //                     // Utiliza el escáner de SonarQube con el token de acceso
+        //                     sh "cd ${PROJECT_ROOT};${scannerHome}/bin/sonar-scanner -Dsonar.login=${SONAR_TOKEN}"
+        //                 }
+        //             }
+        //         }
+        //     }
+        // }
         stage("publish to nexus") {
             steps {
                 script {
