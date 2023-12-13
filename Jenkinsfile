@@ -89,8 +89,8 @@ pipeline {
                 script {
                     dir("${PROJECT_ROOT}") {
                         docker.withTool("docker") {
-                            docker.build("mi-imagen-docker:latest")
-                            sh("docker build -t mi-imagen-docker:latest .")
+                            docker.build("mi-imagen-docker:latest", "-f DockerFile")
+                            sh("docker build -t mi-imagen-docker:latest -f DockerFile .")
                         
                             // Autenticarse en el registro Nexus Docker
                             docker.withRegistry("${NEXUS_URL}", "${NEXUS_CREDENTIAL_ID}") {
