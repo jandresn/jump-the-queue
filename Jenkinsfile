@@ -88,7 +88,11 @@ pipeline {
             steps {
                 script {
                     // Construir la imagen Docker
-                    sh "cd ${PROJECT_ROOT} ; docker build -t mi-imagen-docker:latest ."       
+                    def dockerBuildContext = "${PROJECT_ROOT}"
+
+                    // Construye la imagen Docker
+                    docker.build("mi-imagen-docker:latest", "-f ${dockerBuildContext}/Dockerfile ${dockerBuildContext}")
+                
                     // Autenticarse en el registro Nexus Docker
                     docker.withRegistry("${NEXUS_URL}", "${NEXUS_CREDENTIAL_ID}") {
                         // Publicar la imagen Docker en Nexus
