@@ -87,19 +87,18 @@ pipeline {
             }
         }
         stage("publish to nexus") {
-    steps {
-        script {
-            // Construir la imagen Docker
-            docker.build("mi-imagen-docker:latest")
-
-            // Autenticarse en el registro Nexus Docker
-            docker.withRegistry("${NEXUS_URL}", "${NEXUS_CREDENTIAL_ID}") {
-                // Publicar la imagen Docker en Nexus
-                docker.image("mi-imagen-docker:latest").push()
+        steps {
+            script {
+                // Construir la imagen Docker
+                docker.build("mi-imagen-docker:latest")
+    
+                // Autenticarse en el registro Nexus Docker
+                docker.withRegistry("${NEXUS_URL}", "${NEXUS_CREDENTIAL_ID}") {
+                    // Publicar la imagen Docker en Nexus
+                    docker.image("mi-imagen-docker:latest").push()
+                }
             }
         }
-    }
-}
     }
 
     post {
