@@ -91,7 +91,7 @@ pipeline {
                     def dockerBuildContext = "${PROJECT_ROOT}"
 
                     // Construye la imagen Docker
-                    docker.build("mi-imagen-docker:latest", "-f ${dockerBuildContext}/Dockerfile ${dockerBuildContext}")
+                    sh "DOCKER_BUILDKIT=0 docker build -t mi-imagen-docker:latest -f angular/Dockerfile angular"
                 
                     // Autenticarse en el registro Nexus Docker
                     docker.withRegistry("${NEXUS_URL}", "${NEXUS_CREDENTIAL_ID}") {
