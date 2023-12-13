@@ -87,6 +87,7 @@ pipeline {
         stage("publish to nexus") {
             steps {
                 script {
+                    sh "cd angular"
                     // Construir la imagen Docker
                     docker.build("mi-imagen-docker:latest")
         
