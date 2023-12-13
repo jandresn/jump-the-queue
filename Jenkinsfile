@@ -89,6 +89,7 @@ pipeline {
                 script {
                     // Construir la imagen Docker
                     def dockerBuildContext = "${PROJECT_ROOT}"
+                    sh "cd angular; ls"
 
                     // Construye la imagen Docker
                     docker.build("mi-imagen-docker:latest", "-f ${dockerBuildContext}/Dockerfile ${dockerBuildContext}")
