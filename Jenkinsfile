@@ -72,7 +72,7 @@ pipeline {
                      withCredentials([string(credentialsId: 'sonartoken', variable: 'SONAR_TOKEN')]) {
                         withSonarQubeEnv('sonarqube') {
                             // Utiliza el escáner de SonarQube con el token de acceso
-                            sh "${scannerHome}/bin/sonar-scanner -Dsonar.login=${SONAR_TOKEN}"
+                            sh "cd ${PROJECT_ROOT};${scannerHome}/bin/sonar-scanner -Dsonar.login=${SONAR_TOKEN}"
                         }
                     }
                 }
