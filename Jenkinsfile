@@ -2,16 +2,14 @@ pipeline {
     agent any
     environment {
         PROJECT_ROOT = 'angular'
-    }
-    tools {
-    nodejs "NodeJs"
-    }
-    environment {
         NEXUS_VERSION = "nexus3"
         NEXUS_PROTOCOL = "http"
         NEXUS_URL = "nexus:8088"
         NEXUS_REPOSITORY = "nexusAngularApp"
         NEXUS_CREDENTIAL_ID = "nexusCredential"
+    }
+    tools {
+    nodejs "NodeJs"
     }
     stages {
         stage('Checkout') {
