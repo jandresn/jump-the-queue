@@ -88,7 +88,7 @@ pipeline {
             steps {
                 script {
                     // Construir la imagen Docker
-                    sh "docker build -t mi-imagen-docker:latest angular"       
+                    sh "cd ${PROJECT_ROOT} ; docker build -t mi-imagen-docker:latest ."       
                     // Autenticarse en el registro Nexus Docker
                     docker.withRegistry("${NEXUS_URL}", "${NEXUS_CREDENTIAL_ID}") {
                         // Publicar la imagen Docker en Nexus
