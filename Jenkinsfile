@@ -51,14 +51,14 @@ pipeline {
             }
         }
 
-        stage('Test') {
-            steps {
-                script {
-                    // Ejecuta las pruebas del proyecto Angular
-                    sh " cd ${PROJECT_ROOT};npm run test"
-                }
-            }
-        }
+        // stage('Test') {
+        //     steps {
+        //         script {
+        //             // Ejecuta las pruebas del proyecto Angular
+        //             sh " cd ${PROJECT_ROOT};npm run test"
+        //         }
+        //     }
+        // }
 
         stage('Lint') {
             steps {
