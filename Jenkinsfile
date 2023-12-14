@@ -33,56 +33,56 @@ pipeline {
 
 
         
-        // stage('Install Dependencies') {
-        //     steps {
-        //         script {
-        //             // Instala las dependencias del proyecto Angular
-        //             sh "cd ${PROJECT_ROOT}; npm install --force"
-        //         }
-        //     }
-        // }
+        stage('Install Dependencies') {
+            steps {
+                script {
+                    // Instala las dependencias del proyecto Angular
+                    sh "cd ${PROJECT_ROOT}; npm install --force"
+                }
+            }
+        }
 
-        // stage('Build') {
-        //     steps {
-        //         script {
-        //             // Realiza la construcción del proyecto Angular
-        //             sh "cd ${PROJECT_ROOT};npm run build"
-        //         }
-        //     }
-        // }
+        stage('Build') {
+            steps {
+                script {
+                    // Realiza la construcción del proyecto Angular
+                    sh "cd ${PROJECT_ROOT};npm run build"
+                }
+            }
+        }
 
-        // stage('Test') {
-        //     steps {
-        //         script {
-        //             // Ejecuta las pruebas del proyecto Angular
-        //             sh " cd ${PROJECT_ROOT};npm run test"
-        //         }
-        //     }
-        // }
+        stage('Test') {
+            steps {
+                script {
+                    // Ejecuta las pruebas del proyecto Angular
+                    sh " cd ${PROJECT_ROOT};npm run test"
+                }
+            }
+        }
 
-        // stage('Lint') {
-        //     steps {
-        //         script {
-        //             // Ejecuta el linting para el proyecto Angular
-        //             sh "cd ${PROJECT_ROOT};npm run lint"
-        //         }
-        //     }
-        // }
+        stage('Lint') {
+            steps {
+                script {
+                    // Ejecuta el linting para el proyecto Angular
+                    sh "cd ${PROJECT_ROOT};npm run lint"
+                }
+            }
+        }
 
-        // stage('SonarQube Analysis') {
-        //     steps {
-        //         script {
-        //            // Configura la herramienta de SonarQube Scanner
-        //             def scannerHome = tool name: 'sonarqube', type: 'hudson.plugins.sonar.SonarRunnerInstallation'
-        //              withCredentials([string(credentialsId: 'sonartoken', variable: 'SONAR_TOKEN')]) {
-        //                 withSonarQubeEnv('sonarqube') {
-        //                     // Utiliza el escáner de SonarQube con el token de acceso
-        //                     sh "cd ${PROJECT_ROOT};${scannerHome}/bin/sonar-scanner -Dsonar.login=${SONAR_TOKEN}"
-        //                 }
-        //             }
-        //         }
-        //     }
-        // }
+        stage('SonarQube Analysis') {
+            steps {
+                script {
+                   // Configura la herramienta de SonarQube Scanner
+                    def scannerHome = tool name: 'sonarqube', type: 'hudson.plugins.sonar.SonarRunnerInstallation'
+                     withCredentials([string(credentialsId: 'sonartoken', variable: 'SONAR_TOKEN')]) {
+                        withSonarQubeEnv('sonarqube') {
+                            // Utiliza el escáner de SonarQube con el token de acceso
+                            sh "cd ${PROJECT_ROOT};${scannerHome}/bin/sonar-scanner -Dsonar.login=${SONAR_TOKEN}"
+                        }
+                    }
+                }
+            }
+        }
         stage("publish to nexus") {
             steps {
                 script {
