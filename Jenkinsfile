@@ -4,7 +4,7 @@ pipeline {
         PROJECT_ROOT = 'angular'
         NEXUS_VERSION = "nexus3"
         NEXUS_PROTOCOL = "http"
-        NEXUS_URL = "https://nexus:8088"
+        NEXUS_URL = "https://localhost:8088"
         NEXUS_REPOSITORY = "nexusAngularApp"
         NEXUS_CREDENTIAL_ID = "nexusCredential"
     }
